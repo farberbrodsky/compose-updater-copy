@@ -1,0 +1,9 @@
+version: '3'
+services:
+  watcher:
+    build: .
+    restart: always
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "/home/ubuntu:/home/ubuntu:ro"
+    command: docker-compose-watcher -once=1 -cleanup=1 -build=1 -printSettings=1
